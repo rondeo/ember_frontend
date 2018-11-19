@@ -1,0 +1,7 @@
+{{#data-table data=model as |t|}}
+  {{t.column propertyName="firstName" name="Vorname"}}
+  {{t.column propertyName="lastName" name="Nachname"}}
+  {{t.column propertyName="email" name="E-Mail"}}
+{{/data-table}}
+
+{{outlet}}
