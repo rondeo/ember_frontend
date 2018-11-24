@@ -1,7 +1,20 @@
-<DataTable @data={{this.model}} as |t|>
-  <t.column @propertyName="firstName" @name="Vorname" />
-  <t.column @propertyName="lastName" @name="Nachname" />
-  <t.column @propertyName="email" @name="E-Mail" />
-</DataTable>
+<table>
+  <thead>
+    <tr>
+      <th>Vorname</th>
+      <th>Nachname</th>
+      <th>E-Mail</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each this.model as |user|}}
+      <tr>
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.email}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
 
 {{outlet}}
