@@ -1,4 +1,4 @@
-<table>
+<table data-test-table="users">
   <thead>
     <tr>
       <th>Vorname</th>
@@ -8,10 +8,16 @@
   </thead>
   <tbody>
     {{#each this.model as |user|}}
-      <tr>
-        <td>{{user.firstName}}</td>
-        <td>{{user.lastName}}</td>
-        <td>{{user.email}}</td>
+      <tr data-test-user={{user.id}}>
+        <td data-test-column="first-name">
+          {{user.firstName}}
+        </td>
+        <td data-test-column="last-name">
+          {{user.lastName}}
+        </td>
+        <td data-test-column="email">
+          {{user.email}}
+        </td>
       </tr>
     {{/each}}
   </tbody>
