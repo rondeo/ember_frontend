@@ -1,0 +1,23 @@
+image: node:10
+
+cache:
+  paths:
+    - .yarn/
+    - node_modules/
+
+before_script:
+  # configure yarn to use cache
+  - yarn config set cache-folder .yarn
+  # install google chrome
+  - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+  - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
+  - apt-get update -yqqq
+  - apt-get install -y google-chrome-stable
+  # install dependencies
+  - yarn install --non-interactive
+
+test:
+  script:
+    - yarn lint:hbs
+    - yarn lint:js
+    - yarn test
