@@ -1,7 +1,7 @@
 <h1>Mitarbeiter hinzufügen</h1>
 
 <UserForm
-  @model={{model}}
+  @model={{changeset (hash) UserValidations}}
   @onSave={{action "save"}}
 />
 

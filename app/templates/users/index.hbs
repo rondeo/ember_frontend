@@ -8,12 +8,16 @@
   Mitarbeiter hinzufügen
 </LinkTo>
 
-<table data-test-table="users">
+<table
+  class="table"
+  data-test-table="users"
+>
   <thead>
     <tr>
       <th>Vorname</th>
       <th>Nachname</th>
       <th>E-Mail</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -27,6 +31,15 @@
         </td>
         <td data-test-column="email">
           {{user.email}}
+        </td>
+        <td>
+          <LinkTo
+            @params={{array "user.edit" user.id}}
+            class="btn btn-primary"
+            data-test-button="edit"
+          >
+            bearbeiten
+          </LinkTo>
         </td>
       </tr>
     {{/each}}
