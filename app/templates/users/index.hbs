@@ -1,0 +1,36 @@
+<h1>Mitarbeiter</h1>
+
+<LinkTo
+  @params={{array "users.add"}}
+  class="btn btn-primary"
+  data-test-link="users.add"
+>
+  Mitarbeiter hinzufügen
+</LinkTo>
+
+<table data-test-table="users">
+  <thead>
+    <tr>
+      <th>Vorname</th>
+      <th>Nachname</th>
+      <th>E-Mail</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each this.model as |user|}}
+      <tr data-test-user={{user.id}}>
+        <td data-test-column="first-name">
+          {{user.firstName}}
+        </td>
+        <td data-test-column="last-name">
+          {{user.lastName}}
+        </td>
+        <td data-test-column="email">
+          {{user.email}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+{{outlet}}
