@@ -109,4 +109,39 @@ module('Acceptance | users', function(hooks) {
     assert.dom('[data-test-form="user"] [data-test-form-element="email"] input')
       .hasClass('is-valid', 'form element email is shown as valid after user filled in an email');
   });
+
+  test('edit an user', async function(assert) {
+    let user = this.server.create('user');
+    this.server.createList('user', 3);
+
+    await visit('/users');
+    assert.equal(currentURL(), '/users', 'could visit users page');
+
+    await click(`[data-test-table="users"] [data-test-user="${user.id}"] [data-test-button="edit"]`);
+    assert.equal(
+      currentURL(), `/user/${user.id}/edit`,
+      'transitioned to users edit page after user has clicked on edit button'
+    );
+
+    await fillIn('[data-test-form="user"] [data-test-form-element="first-name"] input', 'Max');
+    await fillIn('[data-test-form="user"] [data-test-form-element="last-name"] input', 'Mustermann');
+    await fillIn('[data-test-form="user"] [data-test-form-element="email"] input', 'max-mustermann@examples.com');
+    await click('[data-test-form="user"] [data-test-button="submit"]');
+    assert.equal(
+      currentURL(), '/users',
+      'transitioned to users view after form has been submitted succesfully'
+    );
+
+    let persistedRecord = this.server.db.users.find(user.id);
+    assert.equal(persistedRecord.firstName, 'Max', 'updated first name has been persisted');
+    assert.equal(persistedRecord.lastName, 'Mustermann', 'updated last name has been persisted');
+    assert.equal(persistedRecord.email, 'max-mustermann@examples.com', 'updated email has been persisted');
+
+    assert.dom(`[data-test-table="users"] [data-test-user="${user.id}"] [data-test-column="first-name"]`)
+      .hasText('Max', 'users table shows updated first name attribute');
+     assert.dom(`[data-test-table="users"] [data-test-user="${user.id}"] [data-test-column="last-name"]`)
+      .hasText('Mustermann', 'users table shows updated last name attribute');
+    assert.dom(`[data-test-table="users"] [data-test-user="${user.id}"] [data-test-column="email"]`)
+      .hasText('max-mustermann@examples.com', 'users table shows updated email attribute');
+  });
 });

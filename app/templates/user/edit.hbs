@@ -1,0 +1,6 @@
+<h1>Mitarbeiter {{model.name}} bearbeiten</h1>
+
+<UserForm
+  @model={{changeset model UserValidations}}
+  @onSave={{action "save"}}
+/>

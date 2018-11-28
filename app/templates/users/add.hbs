@@ -1,38 +1,8 @@
 <h1>Mitarbeiter hinzufügen</h1>
 
-<BsForm
-  @model={{model}}
-  @onSubmit={{action "save"}}
-  data-test-form="user" as |form|
->
-  <form.element
-    @label="Vorname"
-    @property="firstName"
-    data-test-form-element="first-name"
-  />
-  <form.element
-    @label="Nachname"
-    @property="lastName"
-    data-test-form-element="last-name"
-  />
-  <form.element
-    @controlType="email"
-    @label="Email"
-    @property="email"
-    data-test-form-element="email"
-  />
-  <BsButton
-    @buttonType="submit"
-    @disabled={{form.isSubmitting}}
-    @type="primary"
-    class="btn-primary"
-    data-test-button="submit"
-  >
-    Speichern
-    {{#if form.isSubmitting}}
-      {{fa-icon "spinner"}}
-    {{/if}}
-  </BsButton>
-</BsForm>
+<UserForm
+  @model={{changeset (hash) UserValidations}}
+  @onSave={{action "save"}}
+/>
 
 {{outlet}}

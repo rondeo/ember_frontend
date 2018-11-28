@@ -1,23 +1,22 @@
 import Controller from '@ember/controller';
-import { inject as service } from '@ember/service';
 import UserValidations from '../../validations/user';
 
 export default Controller.extend({
-  store: service(),
-
   UserValidations,
 
   actions: {
     save(changeset) {
-      let record = this.store.createRecord('user', changeset.get('change'));
-      return record.save()
+      let user = this.model;
+      user.setProperties(
+        changeset.get('change')
+      );
+      return user.save()
         .then(() => {
           this.transitionToRoute('users');
         })
         .catch((error) => {
-          alert(`Mitarbeiter konnte nicht gespeichert werden: ${error}`);
-
-          record.destroy();
+          alert(`Konnte die Änderungen an Mitarbeiter ${user.name} nicht speichern.`);
+          throw error;
         });
     }
   }
