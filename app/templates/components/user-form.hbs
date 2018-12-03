@@ -19,6 +19,18 @@
     @property="email"
     data-test-form-element="email"
   />
+  <form.element
+    @controlType="mobil"
+    @label="Mobil"
+    @property="mobil"
+    data-test-form-element="mobil"
+  />
+  <form.element
+    @controlType="city"
+    @label="City"
+    @property="city"
+    data-test-form-element="city"
+  />
   <BsButton
     @buttonType="submit"
     @disabled={{form.isSubmitting}}
