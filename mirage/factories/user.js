@@ -7,5 +7,5 @@ export default Factory.extend({
   lastName: faker.name.lastName,
   street: faker.address.streetAddress,
   zipCode: faker.address.zipCode,
-    mobil: faker.address.phone,
+  mobil: faker.address.phone,
 });
