@@ -8,6 +8,8 @@ export default DS.Model.extend({
   email: attr('string'),
   firstName: attr('string'),
   lastName: attr('string'),
+    mobil: attr('string'),
+    city: attr('string'),
 
   name: computed('firstName', 'lastName', function() {
     let { firstName, lastName } = this;
