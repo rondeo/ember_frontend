@@ -4,12 +4,12 @@
   data-test-form="user" as |form|
 >
   <form.element
-    @label="Vorname"
+    @label="firstName"
     @property="firstName"
     data-test-form-element="first-name"
   />
   <form.element
-    @label="Nachname"
+    @label="lastName"
     @property="lastName"
     data-test-form-element="last-name"
   />
@@ -38,7 +38,7 @@
     class="btn-primary"
     data-test-button="submit"
   >
-    Speichern
+    save
     {{#if form.isSubmitting}}
       {{fa-icon "spinner"}}
     {{/if}}
