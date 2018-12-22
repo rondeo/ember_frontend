@@ -15,8 +15,8 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd grizzzel-frontend`
+* `git clone <repository-url> ember_frontend` this repository
+* `cd ember_frontend` ( or other folder-name )
 * `yarn install`
 
 ## Running / Development
