@@ -14,8 +14,8 @@
 >
   <thead>
     <tr>
-      <th>firstname</th>
-      <th>lastname</th>
+      <th>Firstname</th><!-- add here click on - to use sort function ASC DESC -->
+      <th>Lastname</th>
       <th>E-Mail</th>
       <th>Mobil</th>
       <th>City</th>
@@ -25,10 +25,10 @@
   <tbody>
     {{#each this.model as |user|}}
       <tr data-test-user={{user.id}}>
-        <td data-test-column="first-name">
+        <td data-test-column="firstname">
           {{user.firstName}}
         </td>
-        <td data-test-column="last-name">
+        <td data-test-column="lastname">
           {{user.lastName}}
         </td>
         <td data-test-column="email">
