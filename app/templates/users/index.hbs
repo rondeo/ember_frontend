@@ -19,11 +19,19 @@
       <th>E-Mail</th>
       <th>Mobil</th>
       <th>City</th>
+      <th>Zip Code</th>
+    </tr>
+    <tr>
+      <th><input size="8" oninput={{action (mut filterFirstName) value="target.value"}}></th>
+      <th><input size="8" oninput={{action (mut filterLastName) value="target.value"}}></th>
       <th></th>
+      <th></th>
+      <th><input size="8" oninput={{action (mut filterCity) value="target.value"}}></th>
+      <th><input size="3" oninput={{action (mut filterZipCode) value="target.value"}}></th>
     </tr>
   </thead>
   <tbody>
-    {{#each this.model as |user|}}
+    {{#each this.pagedItems as |user|}}
       <tr data-test-user={{user.id}}>
         <td data-test-column="firstname">
           {{user.firstName}}
@@ -40,6 +48,9 @@
         <td data-test-column="city">
           {{user.city}}
         </td>
+        <td data-test-column="zipcode">
+          {{user.zipCode}}
+        </td>
         <td>
           <LinkTo
             @params={{array "user.edit" user.id}}
@@ -53,5 +64,7 @@
     {{/each}}
   </tbody>
 </table>
-
+<p>
+  Erste {{this.pagedItems.length}} von {{this.filteredItems.length}} Datensätzen. Für weitere Datensätze bitte Filter genauer machen.
+</p>
 {{outlet}}

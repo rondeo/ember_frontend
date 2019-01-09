@@ -10,6 +10,7 @@ export default DS.Model.extend({
   lastName: attr('string'),
   mobil: attr('string'),
   city: attr('string'),
+  zipCode: attr('string'),
 
   name: computed('firstName', 'lastName', function() {
     let { firstName, lastName } = this;
