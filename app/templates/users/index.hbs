@@ -15,8 +15,22 @@
 >
   <thead>
     <tr>
-      <th>Firstname</th>
-      <th>Lastname</th>
+      <th>
+        <select
+          onclick={{action (mut sortBy) value="target.value"}}
+        >
+          <option selected value="firstName:asc">firstname A</option>
+          <option value="firstName:desc">firstname Z</option>
+        </select>
+      </th>
+      <th>
+        <select
+          onclick={{action (mut sortBy) value="target.value"}}
+        >
+          <option selected value="lastName:asc">lastname A</option>
+          <option value="lastName:desc">lastname Z</option>
+        </select>
+      </th>
       <th>E-Mail</th>
       <th>Mobil</th>
       <th>City</th>
