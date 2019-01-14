@@ -1,1 +1,66 @@
+<br>
+<b>Movies</b>
+
+<LinkTo
+  @params={{array "movies.add"}}
+  class="btn btn-primary"
+  data-test-link="movies.add"
+>
+  add
+</LinkTo>
+
+<table
+  class="table"
+  data-test-table="movies"
+>
+  <thead>
+  <tr>
+    <th>
+      <select
+        onclick={{action (mut sortBy) value="target.value"}}
+      >
+        <option selected value="title:asc">Title A</option>
+        <option value="title:desc">Title Z</option>
+      </select>
+    </th>
+    <th>
+      <select
+        onclick={{action (mut sortBy) value="target.value"}}
+      >
+        <option selected value="year:asc">Year 0</option>
+        <option value="year:desc">Year 9</option>
+      </select>
+    </th>
+    <th>Director</th>
+    <th>Country</th>
+  </tr>
+  <tr>
+    <th><input size="8" oninput={{action (mut filterTitle) value="target.value"}}></th>
+    <th><input size="4" oninput={{action (mut filterYear) value="target.value"}}></th>
+    <th><input size="8" oninput={{action (mut filterDirector) value="target.value"}}></th>
+    <th><input size="8" oninput={{action (mut filterCountry) value="target.value"}}></th>
+  </tr>
+  </thead>
+  <tbody>
+  {{#each this.pagedItems as |movie|}}
+    <tr data-test-user={{movie.id}}>
+      <td data-test-column="title">
+        {{movie.title}}
+      </td>
+      <td data-test-column="year">
+        {{movie.year}}
+      </td>
+      <td data-test-column="director">
+        {{movie.director}}
+      </td>
+      <td data-test-column="country">
+        {{movie.country}}
+      </td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
+<p>
+  Erste {{this.pagedItems.length}} von {{this.filteredItems.length}} Datensätzen. Für weitere Datensätze bitte Filter genauer machen.
+</p>
 {{outlet}}

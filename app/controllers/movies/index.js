@@ -9,17 +9,16 @@ export default Controller.extend({
   filteredItems: computed(
     'sortBy',
     'title',
+    'year',
     'director',
     'country',
-    'year',
     'model.[]',
     function() {
-
       return this.model.filter((movie) => {
         return (!this.filterTitle || movie.title.includes(this.filterTitle))
-          && (!this.filterDirector || movie.director.includes(this.filterDirector))
-          && (!this.filtercountry || movie.country.includes(this.filterCountry))
           && (!this.filterYear || movie.year >= this.filterYear)
+          && (!this.filterDirector || movie.director.includes(this.filterDirector))
+          && (!this.filterCountry || movie.country.includes(this.filterCountry))
           ;
       })
     }),
