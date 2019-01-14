@@ -14,6 +14,12 @@ Router.map(function() {
   this.route('user', { path: 'user/:user_id' }, function() {
     this.route('edit');
   });
+  this.route('movie', function() {
+    this.route('edit');
+  });
+  this.route('movies', function() {
+    this.route('add');
+  });
 });
 
 export default Router;
