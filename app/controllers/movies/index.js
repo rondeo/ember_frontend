@@ -8,10 +8,10 @@ export default Controller.extend({
 
   filteredItems: computed(
     'sortBy',
-    'title',
-    'year',
-    'director',
-    'country',
+    'filterTitle',
+    'filterYear',
+    'filterDirector',
+    'filterCountry',
     'model.[]',
     function() {
       return this.model.filter((movie) => {
