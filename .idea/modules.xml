@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$USER_HOME$/LARAVEL/API_passport/.idea/API_passport.iml" filepath="$USER_HOME$/LARAVEL/API_passport/.idea/API_passport.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/frontend.iml" filepath="$PROJECT_DIR$/.idea/frontend.iml" />
     </modules>
   </component>
