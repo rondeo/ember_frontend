@@ -7,6 +7,6 @@ export default DS.Model.extend({
   name: attr('string'),
   manager: attr('string'),
   date: attr('string'),
-  description: attr('text'),
+  description: attr('string'),
   userId: attr('number'),
 });
